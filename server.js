@@ -1,13 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const config = require("./config/config");
-
+const routes = require("./routes");
 const app = express();
 
 app.use(cors());
-app.get("/api/status", (req, res) => {
-  res.send("Hello World...");
-});
+
+app.use("/api", routes);
 
 app.listen(config.port, () => {
   console.log(
