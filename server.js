@@ -7,6 +7,7 @@ const httpStatus = require("http-status");
 const config = require("./config/config");
 const morgan = require("morgan");
 const routes = require("./routes");
+const errorHandler = require("./middlewares/error");
 const ApiError = require("./utils/ApiError");
 
 const app = express();
@@ -37,8 +38,11 @@ app.use("/api", routes);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, "error.pageNotFound"));
+  next(new ApiError(httpStatus.NOT_FOUND, "pageNotFound"));
 });
+
+// global error handler
+app.use(errorHandler);
 
 app.listen(config.port, () => {
   console.log(
