@@ -3,9 +3,11 @@ const helmet = require("helmet");
 const xss = require("xss-clean");
 const compression = require("compression");
 const cors = require("cors");
+const httpStatus = require("http-status");
 const config = require("./config/config");
 const morgan = require("morgan");
 const routes = require("./routes");
+const ApiError = require("./utils/ApiError");
 
 const app = express();
 
@@ -32,6 +34,11 @@ app.use(cors());
 app.options("*", cors());
 
 app.use("/api", routes);
+
+// send back a 404 error for any unknown api request
+app.use((req, res, next) => {
+  next(new ApiError(httpStatus.NOT_FOUND, "error.pageNotFound"));
+});
 
 app.listen(config.port, () => {
   console.log(
