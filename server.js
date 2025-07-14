@@ -28,7 +28,7 @@ app.use(xss());
 app.use(compression());
 
 // HTTP logs
-app.use(morgan("dev"));
+app.use(morgan("short"));
 
 // enable cors
 app.use(cors());
