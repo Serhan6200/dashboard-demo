@@ -15,12 +15,16 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "compression": "^1.7.5",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "diskusage": "^1.2.0",
     "dotenv": "^17.2.0",
-    "express": "^5.1.0",
-    "os-utils": "^0.0.14"
+    "express": "^4.21.2",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.0",
+    "os-utils": "^0.0.14",
+    "xss-clean": "^0.1.4"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
